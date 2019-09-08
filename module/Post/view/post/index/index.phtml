@@ -1,0 +1,52 @@
+
+<div class="row">
+    
+
+<a href="<?php  echo $this->basePath('/post/add'); ?>" class="btn btn-primary">CREATE</a>
+
+
+</div>
+
+
+<div class='row'>
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Raza</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Caracteristicas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php if(count($posts)>0):?>
+        <?php foreach ($posts as  $post): ?>
+
+        <tr>
+          <th><?php echo $post->getId();?></th>
+          <td><?php echo $post->getNombre();?></td>
+          <td><?php echo $post->getRaza();?></td>
+          <td><?php echo $post->getSexo();?></td>
+          <td><?php echo $post->getCaracteristicas();?></td>
+
+          <td><a href="<?php echo $this->url('post',['action' => 'view', 'id' => $post->getId()]);?>" class="label label-success">VER</a></td>
+          
+          <td><a href="<?php echo $this->url('post',['action' => 'edit', 'id' => $post->getId()]);?>" class="label label-primary">ACTUALIZAR</a></td>
+         
+          <td><a href="<?php echo $this->url('post',['action' => 'delete', 'id' => $post->getId()]);?>" class="label label-danger">ELIMINAR</a></td>
+        </tr>
+   
+
+
+
+         <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td>No records found!</td>
+        </tr>
+
+   <?php endif;?>
+  </tbody>
+</table>
+ 
